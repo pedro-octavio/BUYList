@@ -1,6 +1,7 @@
 ﻿using System;
 using BUYList.Application.DTOs;
 using BUYList.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BUYList.API.Controllers
@@ -55,6 +56,8 @@ namespace BUYList.API.Controllers
         {
             try
             {
+                _userApplicationService.ValidateUser(userDTO.Id.ToString(), User.Identity.Name);
+
                 _userApplicationService.Update(userDTO);
 
                 return Ok(userDTO);
@@ -67,11 +70,14 @@ namespace BUYList.API.Controllers
         }
 
         [HttpDelete("{email}")]
+        [Authorize]
         public IActionResult Delete
         ([FromRoute] string email)
         {
             try
             {
+                _userApplicationService.ValidateUser(email, User.Identity.Name);
+
                 _userApplicationService.Remove(email);
 
                 return Ok("User successfully removed.");

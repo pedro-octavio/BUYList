@@ -1,12 +1,14 @@
 ﻿using System;
 using BUYList.Application.DTOs;
 using BUYList.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BUYList.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ItemController :
     ControllerBase
     {

@@ -18,6 +18,7 @@ namespace BUYList.Infra.IOC
         {
             builder.RegisterType<ItemApplicationService>().As<IItemApplicationService>();
             builder.RegisterType<UserApplicationService>().As<IUserApplicationService>();
+            builder.RegisterType<TokenApplicationService>().As<ITokenApplicationService>();
 
             builder.RegisterType<ItemService>().As<IItemService>();
             builder.RegisterType<UserService>().As<IUserService>();

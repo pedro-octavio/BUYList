@@ -10,7 +10,8 @@ A multi-user api can control your shopping list.
 3) Update database using this command:
 > Visual Studio: Update-Database
 > Some text editor: dotnet  ef database update
-4) Run the BUYList.API;
+4) Insert a hash string in BUYList.Domain/Settings.cs
+5) Run the BUYList.API;
 ## MAKE WITH
 * .Net Core
 * Automapper
@@ -18,8 +19,10 @@ A multi-user api can control your shopping list.
 * FluentValidator
 * Autofac
 * MySql
+* IdentityModel
 ## VERSIONS
 * 1.0.0 - First Commit;
-* 1.1.0 - User services added;
+* 1.1.0 - User services Added;
+* 1.2.0 - JWT Authentication Added.
 ## CONTRIBUITORS
 * [**Pedro Octávio**](https://github.com/pedro-octavio) - *desenvolviment of project*

@@ -78,5 +78,19 @@ namespace BUYList.Application.Services
                 throw ex;
             }
         }
+
+        public void ValidateUser(string email, string tokenUserId)
+        {
+            try
+            {
+                var atualId = GetByEmail(email).Id.ToString();
+
+                if (atualId != tokenUserId) throw new Exception("Incorrect user.");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

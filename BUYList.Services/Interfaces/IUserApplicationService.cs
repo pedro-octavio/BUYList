@@ -1,5 +1,4 @@
 ﻿using BUYList.Application.DTOs;
-using System;
 
 namespace BUYList.Application.Interfaces
 {
@@ -9,5 +8,6 @@ namespace BUYList.Application.Interfaces
         void Add(UserDTO userDTO);
         void Update(UserDTO userDTO);
         void Remove(string email);
+        void ValidateUser(string email, string tokenUserId);
     }
 }
