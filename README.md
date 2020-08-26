@@ -20,5 +20,6 @@ A multi-user api can control your shopping list.
 * MySql
 ## VERSIONS
 * 1.0.0 - First Commit;
+* 1.1.0 - User services added;
 ## CONTRIBUITORS
 * [**Pedro Octávio**](https://github.com/pedro-octavio) - *desenvolviment of project*

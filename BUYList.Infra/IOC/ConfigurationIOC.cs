@@ -17,12 +17,16 @@ namespace BUYList.Infra.IOC
         (ContainerBuilder builder)
         {
             builder.RegisterType<ItemApplicationService>().As<IItemApplicationService>();
+            builder.RegisterType<UserApplicationService>().As<IUserApplicationService>();
 
             builder.RegisterType<ItemService>().As<IItemService>();
+            builder.RegisterType<UserService>().As<IUserService>();
 
             builder.RegisterType<ItemRepository>().As<IItemRepository>();
+            builder.RegisterType<UserRepository>().As<IUserRepository>();
 
             builder.RegisterType<ItemValidator>().As<IValidator<Item>>();
+            builder.RegisterType<UserValidator>().As<IValidator<User>>();
         }
     }
 }

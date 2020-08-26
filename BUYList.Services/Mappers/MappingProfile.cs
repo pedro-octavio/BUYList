@@ -11,6 +11,7 @@ namespace BUYList.Application.Mappers
         ()
         {
             CreateMap<Item, ItemDTO>().ReverseMap();
+            CreateMap<User, UserDTO>().ReverseMap();
         }
     }
 }
