@@ -15,7 +15,7 @@ A multi-user api can control your shopping list.
 ## MAKE WITH
 * .Net Core
 * Automapper
-* EntityFrameowrk
+* EntityFramework
 * FluentValidator
 * Autofac
 * MySql
