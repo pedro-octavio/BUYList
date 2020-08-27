@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace BUYList.Application.Services
 {
     public class ItemApplicationService :
-        IItemApplicationService
+    IItemApplicationService
     {
         private readonly IItemService _itemService;
         private readonly IMapper _mapper;
@@ -22,11 +22,11 @@ namespace BUYList.Application.Services
         }
 
         public IEnumerable<ItemDTO> GetAll
-        ()
+        (Guid userId)
         {
             try
             {
-                var items = _itemService.GetAll();
+                var items = _itemService.GetAll(userId);
 
                 return _mapper.Map<IEnumerable<ItemDTO>>(items);
             }
@@ -38,11 +38,11 @@ namespace BUYList.Application.Services
         }
 
         public ItemDTO GetById
-        (Guid id)
+        (Guid id, Guid userId)
         {
             try
             {
-                var item = _itemService.GetById(id);
+                var item = _itemService.GetById(id, userId);
 
                 return _mapper.Map<ItemDTO>(item);
             }

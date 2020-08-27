@@ -21,11 +21,11 @@ namespace BUYList.Domain.Services.Services
         }
 
         public IEnumerable<Item> GetAll
-        ()
+        (Guid userId)
         {
             try
             {
-                return _itemRepository.GetAll();
+                return _itemRepository.GetAll(userId);
             }
             catch (Exception ex)
             {
@@ -34,11 +34,11 @@ namespace BUYList.Domain.Services.Services
         }
 
         public Item GetById
-        (Guid id)
+        (Guid id, Guid userId)
         {
             try
             {
-                var item = _itemRepository.GetById(id);
+                var item = _itemRepository.GetById(id, userId);
 
                 if (item != null) return item;
                 else throw new Exception("The item dont exists.");

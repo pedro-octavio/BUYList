@@ -2,6 +2,7 @@
 using BUYList.Domain.Entities;
 using System;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BUYList.Infra.Data.Repositories
 {
@@ -65,6 +66,10 @@ namespace BUYList.Infra.Data.Repositories
                 var user = GetByEmail(email);
 
                 user.IsDeleted = true;
+
+                var items = _dataContext.Items.Where(x => x.UserId == user.Id && x.IsDeleted == false).ToList();
+
+                items.ForEach(x => x.IsDeleted = true);
 
                 _dataContext.Users.Update(user);
 

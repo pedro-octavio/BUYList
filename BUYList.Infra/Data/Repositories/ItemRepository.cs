@@ -15,11 +15,11 @@ namespace BUYList.Infra.Data.Repositories
         (DataContext dataContext) => _dataContext = dataContext;
 
         public IEnumerable<Item> GetAll
-        ()
+        (Guid userId)
         {
             try
             {
-                return _dataContext.Items.ToList().OrderBy(x => x.Name).Where(x => x.IsDeleted == false);
+                return _dataContext.Items.ToList().Where(x => x.IsDeleted == false && x.UserId == userId).OrderBy(x => x.Name);
             }
             catch
             (Exception ex)
@@ -29,11 +29,11 @@ namespace BUYList.Infra.Data.Repositories
         }
 
         public Item GetById
-        (Guid id)
+        (Guid id, Guid userId)
         {
             try
             {
-                return _dataContext.Items.Where(x => x.IsDeleted == false).FirstOrDefault();
+                return _dataContext.Items.Where(x => x.IsDeleted == false && x.Id == id && x.UserId == userId).FirstOrDefault();
             }
             catch
             (Exception ex)
@@ -79,7 +79,9 @@ namespace BUYList.Infra.Data.Repositories
         {
             try
             {
-                var item = GetById(id);
+                var item = _dataContext.Items.Where(x => x.IsDeleted == false && x.Id == id).FirstOrDefault();
+
+                if (item == null) throw new Exception("The item dont exists.");
 
                 item.IsDeleted = true;
 

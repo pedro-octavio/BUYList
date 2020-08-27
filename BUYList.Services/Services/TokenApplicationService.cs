@@ -25,15 +25,15 @@ namespace BUYList.Application.Services
             {
                 var userBase = _userApplicationService.GetByEmail(userDTO.Email);
 
-                if (userDTO.Password == userBase.Password)
+                if (userDTO.Password == userBase.Password && userDTO.Email == userBase.Email)
                 {
                     var key = Encoding.ASCII.GetBytes(Settings.Secret);
 
                     var subject = new ClaimsIdentity
-                    (new GenericIdentity(userDTO.Id.ToString(), "Login"),
+                    (new GenericIdentity(userBase.Id.ToString(), "Login"),
                     new[] {
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-                        new Claim(JwtRegisteredClaimNames.UniqueName, userDTO.Id.ToString())
+                        new Claim(JwtRegisteredClaimNames.UniqueName, userBase.Id.ToString())
                     });
 
                     var tokenDescriptor = new SecurityTokenDescriptor
@@ -49,7 +49,7 @@ namespace BUYList.Application.Services
 
                     return tokenHandler.WriteToken(token);
                 }
-                else throw new Exception("Incorrect password.");
+                else throw new Exception("Incorrect email or password.");
             }
             catch
             (Exception ex)

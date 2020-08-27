@@ -23,7 +23,7 @@ namespace BUYList.API.Controllers
         {
             try
             {
-                return Ok(_itemApplicationService.GetAll());
+                return Ok(_itemApplicationService.GetAll(Guid.Parse(User.Identity.Name)));
             }
             catch
             (Exception ex)
@@ -38,7 +38,7 @@ namespace BUYList.API.Controllers
         {
             try
             {
-                return Ok(_itemApplicationService.GetById(id));
+                return Ok(_itemApplicationService.GetById(id, Guid.Parse(User.Identity.Name)));
             }
             catch
             (Exception ex)
@@ -54,6 +54,8 @@ namespace BUYList.API.Controllers
             try
             {
                 itemDTO.Id = Guid.NewGuid();
+
+                itemDTO.UserId = Guid.Parse(User.Identity.Name);
 
                 itemDTO.CreateDate = DateTime.Now;
 

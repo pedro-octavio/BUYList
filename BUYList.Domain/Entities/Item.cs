@@ -17,5 +17,7 @@ namespace BUYList.Domain.Entities
         public DateTime CreateDate { get; set; }
         [DefaultValue(false)]
         public bool IsDeleted { get; set; }
+        [Required]
+        public Guid UserId { get; set; }
     }
 }

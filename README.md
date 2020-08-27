@@ -23,6 +23,7 @@ A multi-user api can control your shopping list.
 ## VERSIONS
 * 1.0.0 - First Commit;
 * 1.1.0 - User services Added;
-* 1.2.0 - JWT Authentication Added.
+* 1.2.0 - JWT Authentication Added;
+* 1.3.0 - Items and users are now related to validation;
 ## CONTRIBUITORS
 * [**Pedro Octávio**](https://github.com/pedro-octavio) - *desenvolviment of project*

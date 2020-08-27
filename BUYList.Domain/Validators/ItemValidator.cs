@@ -19,6 +19,9 @@ namespace BUYList.Domain.Validators
 
             RuleFor(x => x.CreateDate)
                 .NotNull().WithMessage("The creat date cannot be null");
+
+            RuleFor(x => x.UserId)
+                .NotNull().WithMessage("The userId cannot be null.");
         }
     }
 }
